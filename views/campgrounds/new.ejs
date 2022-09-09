@@ -1,0 +1,62 @@
+<% layout('layout/boilerplate') %>
+    <div class="row">
+        <h1 class="text-center">New Campground</h1>
+        <div class="col-md-6 offset-md-3">
+            <!-- a way to center the form when using col 6 -->
+            <form action="/campgrounds" method="post" novalidate class="validated-form" enctype="multipart/form-data">
+
+                <!-- TITLE -->
+                <div class="mb-3">
+                    <label class="form-label" for="title">Title</label>
+                    <input class="form-control" type="text" id="title" name="campground[title]" required>
+                    <div class="valid-feedback"> Looks good</div>
+                </div>
+
+                <!-- LOCATION -->
+                <div class="mb-3">
+                    <label class="form-label" for="location">Location</label>
+                    <input class="form-control" type="text" id="location" name="campground[location]" required>
+                </div>
+                <div class="valid-feedback"> Looks good</div>
+
+
+                <!-- IMAGE URL -->
+                <div class=" mb-3">
+                    <label class="form-label" for="price">Upload Image</label>
+                    <div class="input-group mb-3">
+                        <input type="file" class="form-control" id="inputGroupFile02" name="image" multiple>
+                        <!-- <span class="form-control" for="inputGroupFile02">Upload</span> -->
+                    </div>
+                </div>
+
+
+
+                <!-- PRICE  -->
+                <div class="mb-3">
+                    <label class="form-label" for="price">Campground Price</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="price-label">$</span>
+                        <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="Price"
+                            aria-describedby="price-label" name="campground[price]" required>
+                    </div>
+                </div>
+                <div class="valid-feedback"> Looks good</div>
+
+                <!-- DESCRIPTION  -->
+                <div class="mb-3">
+                    <label class="form-label" for="description">Description</label>
+                    <textarea class="form-control" type="text" id="description" name="campground[description]"
+                        required></textarea>
+                </div>
+                <div class="valid-feedback"> Looks good</div>
+
+
+                <!-- BUTTON  -->
+                <div class="mb-3">
+                    <button class=" btn btn-success">Add Camp Ground</button>
+                    <a class="btn btn-danger btn-primary" href="/campgrounds">Cancle</a>
+                </div>
+
+            </form>
+        </div>
+    </div>

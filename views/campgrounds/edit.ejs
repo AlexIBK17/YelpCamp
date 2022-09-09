@@ -1,0 +1,66 @@
+<% layout('layout/boilerplate') %>
+    <div class="row">
+        <h1 class="text-center">Edit Campground</h1>
+        <div class="col-md-6 offset-md-3">
+            <!-- a way to center the form when using col 6 -->
+            <form action="/campgrounds/<%=fullCamp._id%>?_method=PUT" method="post" novalidate class="validated-form"
+                enctype="multipart/form-data">
+                <div class="mb-3">
+
+                    <!-- TITLE -->
+                    <label class="form-label" for="title">Title</label>
+                    <input class="form-control" type="text" id="title" name="campground[title]"
+                        value="<%= fullCamp.title %>" required>
+                </div>
+
+                <!-- LOCATION -->
+                <div class=" mb-3">
+                    <label class="form-label" for="location">Location</label>
+                    <input class="form-control" type="text" id="location" name="campground[location]"
+                        value="<%= fullCamp.location %>" required>
+                </div>
+
+                <!-- IMAGE URL -->
+                <div class=" mb-3">
+                    <label class="form-label" for="price">Upload Image</label>
+                    <div class="input-group mb-3">
+                        <input type="file" class="form-control" id="inputGroupFile02" name="image" multiple>
+                        <!-- <span class="form-control" for="inputGroupFile02">Upload</span> -->
+                    </div>
+                </div>
+                <div class="md-3">
+                    <% fullCamp.image.forEach(function(img, i){%>
+                        <img src="<%=img.thumbnail%>" class="img-thumbnail" alt="" srcset="">
+                        <div class="form-check-inline">
+                            <input type="checkbox" id="image-<%=i%>" name="deleteImage[]" value="<%=img.filename%>">
+                            <label for="image-<%=i%>">Delete Image</label>
+                        </div>
+                        <% })%>
+                </div>
+
+                <!-- PRICE  -->
+                <div class=" mb-3">
+                    <label class="form-label" for="price">Campground Price</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="price-label">$</span>
+                        <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="Price"
+                            aria-describedby="price-label" name="campground[price]" value="<%= fullCamp.price %>"
+                            required>
+                    </div>
+                </div>
+
+                <!-- DESCRIPTION  -->
+                <div class=" mb-3">
+                    <label class="form-label" for="description">Description</label>
+                    <textarea class="form-control" type="text" id="description" name="campground[description]"
+                        required><%= fullCamp.description %></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <button class=" btn btn-info">Update Campground</button>
+                     <a class="btn btn-danger btn-primary" href=" /campgrounds/<%=fullCamp._id%>">Cancle</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
